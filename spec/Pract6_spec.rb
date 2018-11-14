@@ -4,7 +4,7 @@ RSpec.describe Etiqueta do
 
 	before :each do
 		#@etiqueta1 = Pract6.new()
-		@etiqueta1 = Etiqueta.new("Galletas", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+		@etiqueta1 = Etiqueta.new("Galletas", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
   	end
 
 	describe "# Pruebas de existencias de los atributos #" do
