@@ -66,4 +66,8 @@ RSpec.describe Etiqueta do
                         expect(@etiqueta1.sal).to eq(0.0)
                 end
 	end
+
+	describe "# Prueba de salida por pantalla" do
+		expect(@etiqueta.to_s).to eq("Nombre\tGrasas\tGrasas Saturadas\tHidratos de Carbono\tAzucares\tProteinas\tSales\nGalletas\t0.0\t0.0\t0.0\t0.0\t0.0\t0.0")
+	end
 end
