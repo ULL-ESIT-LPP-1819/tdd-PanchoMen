@@ -1,5 +1,5 @@
 require "./lib/Pract6/etiqueta.rb"
-require 'lib/Pract6/lista'
+require './lib/Pract6/lista.rb'
 
 RSpec.describe Etiqueta do
 
