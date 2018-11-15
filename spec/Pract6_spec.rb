@@ -114,5 +114,11 @@ RSpec.describe Lista do
     			expect(@lista.size).to eq(1)
     			expect(@lista.empty).to eq(false)
   		end
+
+		it "Extraer el primer elemento de la lista" do
+    			@lista.insert(@etiqueta)
+    			expect(@lista.shift).to eq(@etiqueta)
+    			expect(@lista.empty).to eq(true)
+  		end
   	end
 end
