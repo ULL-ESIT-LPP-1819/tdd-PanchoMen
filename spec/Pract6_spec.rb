@@ -93,4 +93,14 @@ RSpec.describe Lista do
 	before :each do
 		@lista = Lista.new()
 	end
+	
+	describe "# Pruebas de la clase Lista #" do
+		it "Prueba para el nodo next" do
+    			expect(@list.inicio.next).to eq(nil)
+		end
+
+		it "Prueba para el nodo prev" do
+    			expect(@list.final.prev).to eq(nil)
+		end
+  	end
 end
