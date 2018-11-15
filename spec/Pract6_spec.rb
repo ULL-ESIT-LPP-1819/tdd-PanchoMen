@@ -74,7 +74,8 @@ RSpec.describe Etiqueta do
 	end
 
 	describe "# Pruebas de funciones de calculo #" do
-		it "Existe un metodo para obtener el valor energetico en Kj" do
-			expect(@etiqueta2.get_valor_energetico_Kcal.to eq(533.9)
+		it "Existe un metodo para obtener el valor energetico en KJ" do
+			expect(@etiqueta2.get_valor_energetico_KJ).to eq(2230.6)
 		end
+	end
 end
