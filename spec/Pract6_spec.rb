@@ -96,11 +96,11 @@ RSpec.describe Lista do
 	
 	describe "# Pruebas de la clase Lista #" do
 		it "Prueba para el nodo next" do
-    			expect(@list.inicio.next).to eq(nil)
+    			expect(@lista.inicio.next).to eq(nil)
 		end
 
 		it "Prueba para el nodo prev" do
-    			expect(@list.final.prev).to eq(nil)
+    			expect(@lista.final.prev).to eq(nil)
 		end
   	end
 end
