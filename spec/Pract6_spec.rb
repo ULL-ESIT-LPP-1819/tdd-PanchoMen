@@ -4,6 +4,7 @@ RSpec.describe Etiqueta do
 
 	before :each do
 		@etiqueta1 = Etiqueta.new("Galletas", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+		@etiqueta2 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
   	end
 
 	describe "# Pruebas de existencias de los atributos #" do
@@ -66,9 +67,14 @@ RSpec.describe Etiqueta do
                 end
 	end
 
-	describe "# Prueba de salida por pantalla" do
+	describe "# Prueba de salida por pantalla #" do
 		it "Comprobar función to_s" do
 			expect(@etiqueta1.to_s).to eq("Nombre\tGrasas\tGrasas Saturadas\tHidratos de Carbono\tAzucares\tProteinas\tSales\nGalletas\t0.0\t0.0\t0.0\t0.0\t0.0\t0.0")
 		end
 	end
+
+	describe "# Pruebas de funciones de calculo #" do
+		it "Existe un metodo para obtener el valor energetico en Kj" do
+			expect(@etiqueta2.get_valor_energetico_Kcal.to eq(533.9)
+		end
 end
