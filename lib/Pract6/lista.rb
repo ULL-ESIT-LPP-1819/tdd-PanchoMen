@@ -55,4 +55,22 @@ class Lista
            aux.value
         end
     end
+
+    def pop()
+        if(@size==0)
+           puts "No hay elementos"
+        elsif(@size == 1)
+           aux = Node.new(@final.value,nil,nil)
+           @size-=1
+           @inicio = Node.new(nil,nil,nil)
+           @final = Node.new(nil,nil,nil)
+           aux.value
+        elsif(@size > 1)
+           aux = Node.new(@final.value,nil,nil)
+           @size-=1
+	   @final.next.prev = nil
+           @final = @final.next
+           aux.value
+        end
+    end
 end
