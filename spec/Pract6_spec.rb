@@ -92,6 +92,7 @@ end
 RSpec.describe Lista do
 	before :each do
 		@lista = Lista.new()
+		@etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
 	end
 	
 	describe "# Pruebas de la clase Lista #" do
@@ -105,6 +106,13 @@ RSpec.describe Lista do
 
 		it "Prueba para el metodo que comprueba si la lista está vacía" do
     			expect(@lista.empty).to eq(true)
+  		end
+
+		it "Prueba de insertar un elemento" do
+    			@lista.insert(@etiqueta)
+    			expect(@lista.inicio.value).to eq(@etiqueta)
+    			expect(@lista.size).to eq(1)
+    			expect(@lista.empty).to eq(false)
   		end
   	end
 end
