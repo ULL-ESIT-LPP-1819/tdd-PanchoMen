@@ -9,4 +9,12 @@ class Lista
         @final= Node.new(nil,nil,nil)
         @size = 0
     end
+
+    def empty()
+        if(@inicio.value == nil)
+            return true
+        else
+            return false
+        end
+    end
 end
