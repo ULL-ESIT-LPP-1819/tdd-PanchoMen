@@ -3,7 +3,6 @@ require "./lib/Pract6/etiqueta.rb"
 RSpec.describe Etiqueta do
 
 	before :each do
-		#@etiqueta1 = Pract6.new()
 		@etiqueta1 = Etiqueta.new("Galletas", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
   	end
 
@@ -68,6 +67,8 @@ RSpec.describe Etiqueta do
 	end
 
 	describe "# Prueba de salida por pantalla" do
-		expect(@etiqueta.to_s).to eq("Nombre\tGrasas\tGrasas Saturadas\tHidratos de Carbono\tAzucares\tProteinas\tSales\nGalletas\t0.0\t0.0\t0.0\t0.0\t0.0\t0.0")
+		it "Comprobar función to_s" do
+			expect(@etiqueta1.to_s).to eq("Nombre\tGrasas\tGrasas Saturadas\tHidratos de Carbono\tAzucares\tProteinas\tSales\nGalletas\t0.0\t0.0\t0.0\t0.0\t0.0\t0.0")
+		end
 	end
 end
