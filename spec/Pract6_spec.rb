@@ -1,4 +1,5 @@
 require "./lib/Pract6/etiqueta.rb"
+require 'lib/Pract6/lista'
 
 RSpec.describe Etiqueta do
 
@@ -85,5 +86,11 @@ RSpec.describe Etiqueta do
 		it "Existe un metodo para obtener el valor de IR por alimento para 100g" do
 			expect(@etiqueta2.get_IR).to eq(0.27)
 		end
+	end
+end
+
+RSpec.describe Lista do
+	before :each do
+		@lista = Lista.new()
 	end
 end
