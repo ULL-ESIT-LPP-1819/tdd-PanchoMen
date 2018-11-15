@@ -11,10 +11,30 @@ class Lista
     end
 
     def empty()
-        if(@inicio.value == nil)
-            return true
+        if(@size == 0)
+            true
         else
-            return false
+            false
+        end
+    end
+
+    def insert(valor)
+        nuevo = Node.new(valor,nil,@inicio)
+        if (@size == 0)
+          @inicio = Node.new(valor,nil,nil)
+          @final = @inicio
+          @size = 1
+        elsif (@size == 1)
+          @inicio = nuevo
+          @final.next = @inicio
+          @inicio.prev = @final
+          @size += 1
+        elsif (@size > 1)
+          ant_inicio = Node.new(@inicio.value,nuevo,@inicio.prev)
+          ant_inicio.prev.next = ant_inicio
+          @inicio = nuevo
+          @inicio.prev.next = @inicio
+          @size += 1
         end
     end
 end
