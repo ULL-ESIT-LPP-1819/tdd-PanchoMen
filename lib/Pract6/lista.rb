@@ -37,4 +37,22 @@ class Lista
           @size += 1
         end
     end
+
+    def shift()
+        if(@size==0)
+           puts "No hay elementos"
+        elsif(@size==1)
+           aux = Node.new(@inicio.value,nil,nil)
+           @size -= 1
+           @inicio = Node.new(nil,nil,nil)
+           @final = Node.new(nil,nil,nil)
+           aux.value
+        elsif(@size > 1)
+           aux = Node.new(@inicio.value,nil,nil)
+	   @size -= 1
+           @inicio.prev.next = nil
+           @inicio = @inicio.prev
+           aux.value
+        end
+    end
 end
