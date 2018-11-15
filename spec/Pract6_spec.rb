@@ -102,5 +102,9 @@ RSpec.describe Lista do
 		it "Prueba para el nodo prev" do
     			expect(@lista.final.prev).to eq(nil)
 		end
+
+		it "Prueba para el metodo que comprueba si la lista está vacía" do
+    			expect(@lista.empty).to eq(true)
+  		end
   	end
 end
