@@ -23,4 +23,8 @@ class Etiqueta
 	def get_valor_energetico_Kcal
     	    ((@grasas * 9) + (@hidratos_carbono * 4) + (@proteinas * 4) + (@sal * 6)).round(1)
     	end
+
+	def get_IR
+    	    (get_valor_energetico_KJ / 8400).round(2)
+    	end
 end

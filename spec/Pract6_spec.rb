@@ -83,7 +83,7 @@ RSpec.describe Etiqueta do
                 end
 
 		it "Existe un metodo para obtener el valor de IR por alimento para 100g" do
-			expect(@etiqueta2.get_IR).to eq(0.26)
+			expect(@etiqueta2.get_IR).to eq(0.27)
 		end
 	end
 end
