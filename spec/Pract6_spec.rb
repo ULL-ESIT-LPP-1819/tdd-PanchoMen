@@ -77,5 +77,9 @@ RSpec.describe Etiqueta do
 		it "Existe un metodo para obtener el valor energetico en KJ" do
 			expect(@etiqueta2.get_valor_energetico_KJ).to eq(2230.6)
 		end
+
+		it "Existe un metodo para obtener el valor energetico en Kcal" do
+                        expect(@etiqueta2.get_valor_energetico_Kcal).to eq(533.9)
+                end
 	end
 end
