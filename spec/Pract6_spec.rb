@@ -93,6 +93,7 @@ RSpec.describe Lista do
 	before :each do
 		@lista = Lista.new()
 		@etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
+		@etiqueta2 = Etiqueta.new("Galletas", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 	end
 	
 	describe "# Pruebas de la clase Lista #" do
@@ -109,16 +110,23 @@ RSpec.describe Lista do
   		end
 
 		it "Prueba de insertar un elemento" do
-    			@lista.insert(@etiqueta)
-    			expect(@lista.inicio.value).to eq(@etiqueta)
+    			@lista.insert(@etiqueta1)
+    			expect(@lista.inicio.value).to eq(@etiqueta1)
     			expect(@lista.size).to eq(1)
     			expect(@lista.empty).to eq(false)
   		end
 
 		it "Extraer el primer elemento de la lista" do
-    			@lista.insert(@etiqueta)
-    			expect(@lista.shift).to eq(@etiqueta)
+    			@lista.insert(@etiqueta1)
+    			expect(@lista.shift).to eq(@etiqueta1)
     			expect(@lista.empty).to eq(true)
   		end
+
+		it "Extraer el ultimo elemento de la lista" do
+                        @lista.insert(@etiqueta1)
+			@lista.insert(@etiqueta2)
+                        expect(@lista.pop).to eq(@etiqueta1)
+                        expect(@lista.empty).to eq(false)
+                end
   	end
 end
