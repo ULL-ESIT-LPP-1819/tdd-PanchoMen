@@ -136,3 +136,14 @@ RSpec.describe Lista do
                 end
   	end
 end
+
+RSpec.describe ValoracionNutricional do
+	before :each do
+		@valoracion1 = new ValoracionNutricional()
+	end
+
+	describe "# Pruebas para la clase valoración nutricional #" do
+
+	end
+
+end
