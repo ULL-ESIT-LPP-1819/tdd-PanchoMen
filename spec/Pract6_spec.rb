@@ -1,5 +1,7 @@
-require "./lib/Pract6/etiqueta.rb"
+require './lib/Pract6/etiqueta.rb'
 require './lib/Pract6/lista.rb'
+require './lib/Pract6/individuo.rb'
+require './lib/Pract6/valoracionnutricional.rb'
 
 RSpec.describe Etiqueta do
 
@@ -137,12 +139,27 @@ RSpec.describe Lista do
   	end
 end
 
+RSpec.describe Individuo do
+        before :each do
+                @persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+        end
+
+        describe "# Pruebas para la clase Individuo #" do
+		it "Posee un nombre" do
+			expect(@persona1.nombre).not_to be nil
+		end
+        end
+
+end
+
+
 RSpec.describe ValoracionNutricional do
 	before :each do
-		@valoracion1 = new ValoracionNutricional()
+		@persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+		@valoracion1 = ValoracionNutricional.new(@persona1)
 	end
 
-	describe "# Pruebas para la clase valoración nutricional #" do
+	describe "# Pruebas para la clase ValoraciónNutricional #" do
 
 	end
 
