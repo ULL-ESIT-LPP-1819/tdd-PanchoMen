@@ -10,7 +10,7 @@ class Lista
         @size = 0
     end
 
-    def empty()
+    def empty?()
         if(@size == 0)
             true
         else
@@ -20,7 +20,7 @@ class Lista
 
     def insert(valor)
         nuevo = Node.new(valor,nil,@inicio)
-        if (@size == 0)
+        if (empty?)
           @inicio = Node.new(valor,nil,nil)
           @final = @inicio
           @size = 1
@@ -39,7 +39,7 @@ class Lista
     end
 
     def shift()
-        if(@size==0)
+        if(empty?)
            puts "No hay elementos"
         elsif(@size==1)
            aux = Node.new(@inicio.value,nil,nil)
@@ -57,7 +57,7 @@ class Lista
     end
 
     def pop()
-        if(@size==0)
+        if(empty?)
            puts "No hay elementos"
         elsif(@size == 1)
            aux = Node.new(@final.value,nil,nil)
