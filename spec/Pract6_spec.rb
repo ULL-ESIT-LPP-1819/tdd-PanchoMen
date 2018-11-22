@@ -199,6 +199,10 @@ RSpec.describe ValoracionNutricional do
 		it "Prueba para el RCC" do
 			expect(@valoracion1.cal_rcc).to eq(0.91)
 		end
+
+		it "Prueba to_s" do
+                        expect(@valoracion1.to_s).to eq("IMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
+		end
 	end
 
 end
