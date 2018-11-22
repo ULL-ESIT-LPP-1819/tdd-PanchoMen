@@ -30,4 +30,11 @@ class ValoracionNutricional
 	def cal_imc()
 		@imc = (@paciente.peso/(@paciente.talla * @paciente.talla)).round(2)
 	end
+
+	def cal_porcentaje_grasa()
+		if @imc == 0.0
+			cal_imc()
+		end
+		@porcentaje_grasa = ((1.2 * @imc) + (0.23 * @paciente.edad) - (10.8 * @paciente.sexo) - 5.4).round(2)
+	end
 end
