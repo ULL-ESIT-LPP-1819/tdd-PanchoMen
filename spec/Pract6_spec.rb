@@ -174,7 +174,7 @@ RSpec.describe Individuo do
                 end
 
 		it "Prueba to_s" do
-			expect(@persona.to_s).to eq("\tPepe\npeso: 50\ntalla: 1.8\nedad: 30\nsexo: hombre\nmedia circunferencia de cintura: 0.705\nmedia circunferencia de cadera: 0.775")
+			expect(@persona1.to_s).to eq("\tPepe\npeso: 50\ntalla: 1.8\nedad: 30\nsexo: hombre\nmedia circunferencia de cintura: 0.705\nmedia circunferencia de cadera: 0.775")
 		end
         end
 
