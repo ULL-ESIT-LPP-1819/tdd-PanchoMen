@@ -144,10 +144,34 @@ RSpec.describe Individuo do
                 @persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
         end
 
-        describe "# Pruebas para la clase Individuo #" do
-		it "Posee un nombre" do
+        describe "# Pruebas de existencias de los atributos #" do
+		it "Comprobar que existe un nombre" do
 			expect(@persona1.nombre).not_to be nil
 		end
+
+		it "Comprobar que existe el peso" do
+			expect(@persona1.peso).not_to be nil
+		end
+
+		it "Comprobar que existe la talla" do
+                        expect(@persona1.talla).not_to be nil
+                end
+
+		it "Comprobar que existe la edad" do
+			expect(@persona1.edad).not_to be nil
+		end
+
+		it "Comprobar que existe la sexo" do
+                        expect(@persona1.sexo).not_to be nil
+                end
+
+		it "Comprobar que existe la circunferencia de la cintura" do
+                        expect(@persona1.cir_cintura).not_to be nil
+                end
+
+		it "Comprobar que existe la circunferencia de la cadera" do
+                        expect(@persona1.cir_cadera).not_to be nil
+                end
         end
 
 end
