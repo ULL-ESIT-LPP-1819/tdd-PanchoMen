@@ -201,6 +201,7 @@ RSpec.describe ValoracionNutricional do
 		end
 
 		it "Prueba to_s" do
+			@valoracion1.calcular()
                         expect(@valoracion1.to_s).to eq("IMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
 		end
 	end

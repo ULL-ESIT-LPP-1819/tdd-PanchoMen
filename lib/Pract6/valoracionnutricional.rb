@@ -41,4 +41,17 @@ class ValoracionNutricional
 	def cal_rcc()
 		@rcc = (@paciente.cir_cintura / @paciente.cir_cadera).round(2)
 	end
+
+	def calcular()
+		cal_imc()
+		cal_porcentaje_grasa()
+		cal_rcc()
+	end
+
+	def to_s()
+		string = "IMC: #{@imc}\n"
+		string += "Porcentaje de grasa: #{@porcentaje_grasa}\n"
+		string += "RCC: #{@rcc}"
+		return string
+	end
 end
