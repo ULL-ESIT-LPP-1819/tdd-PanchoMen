@@ -27,7 +27,7 @@ class ValoracionNutricional
 		end
 	end
 
-	def imc()
+	def cal_imc()
 		@imc = (@paciente.peso/(@paciente.talla * @paciente.talla)).round(2)
 	end
 end

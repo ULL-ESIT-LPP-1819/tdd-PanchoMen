@@ -189,8 +189,12 @@ RSpec.describe ValoracionNutricional do
 
 	describe "# Pruebas para la clase ValoraciónNutricional #" do
 		it "Prueba para el IMC" do 
-			expect(@valoracion1.imc).to eq(15.43)
+			expect(@valoracion1.cal_imc).to eq(15.43)
 		end
+
+		it "Prueba para el porcentaje de grasa" do
+                        expect(@valoracion1.cal_porcentaje_grasa).to eq(9.22)
+                end
 	end
 
 end
