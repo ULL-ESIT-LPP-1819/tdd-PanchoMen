@@ -37,4 +37,8 @@ class ValoracionNutricional
 		end
 		@porcentaje_grasa = ((1.2 * @imc) + (0.23 * @paciente.edad) - (10.8 * @paciente.sexo) - 5.4).round(2)
 	end
+
+	def cal_rcc()
+		@rcc = (@paciente.cir_cintura / @paciente.cir_cadera).round(2)
+	end
 end
