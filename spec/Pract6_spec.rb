@@ -231,5 +231,9 @@ RSpec.describe Paciente do
 		it "Prueba para el porcentaje de grasa" do
                         expect(@paciente1.porcentaje_grasa).to eq(9.22)
                 end
+
+		it "Prueba para el RCC" do
+                        expect(@paciente1.rcc).to eq(0.91)
+                end
 	end
 end
