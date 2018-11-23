@@ -8,4 +8,8 @@ class Paciente < Individuo
 		@valoracion_nutricional = ValoracionNutricional.new(self)
 		@valoracion_nutricional.calcular()
 	end
+
+	def imc
+		@valoracion_nutricional.imc
+	end
 end
