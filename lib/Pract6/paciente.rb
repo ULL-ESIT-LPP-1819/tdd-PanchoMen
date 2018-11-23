@@ -12,4 +12,8 @@ class Paciente < Individuo
 	def imc
 		@valoracion_nutricional.imc
 	end
+
+	def porcentaje_grasa
+		@valoracion_nutricional.porcentaje_grasa
+	end
 end
