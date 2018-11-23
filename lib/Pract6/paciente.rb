@@ -16,4 +16,8 @@ class Paciente < Individuo
 	def porcentaje_grasa
 		@valoracion_nutricional.porcentaje_grasa
 	end
+
+	def rcc
+		@valoracion_nutricional.rcc
+	end
 end
