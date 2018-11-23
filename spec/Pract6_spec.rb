@@ -228,6 +228,13 @@ RSpec.describe Paciente do
                         expect(@paciente1.is_a?Paciente).to eq(true)
                 end
 
+		it "Prueba de Jerarquía" do
+			expect(@paciente1).to be_a_kind_of(BasicObject)
+			expect(@paciente1).to be_a_kind_of(Object)
+			expect(@paciente1).to be_a_kind_of(Individuo)
+			expect(@paciente1).to be_a_kind_of(Paciente)
+		end
+
 		it "Comprobar que existe un nombre" do
                         expect(@paciente1.nombre).to eq("Pepe")
                 end
