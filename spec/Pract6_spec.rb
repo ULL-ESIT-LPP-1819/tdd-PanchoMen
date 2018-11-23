@@ -219,5 +219,13 @@ RSpec.describe Paciente do
 		it "Prueba herencia" do
 			expect(@paciente1.is_a?Individuo).to eq(true)
 		end
+
+		it "Comprobar que existe un nombre" do
+                        expect(@paciente1.nombre).to eq("Pepe")
+                end
+
+		it "Prueba para el IMC" do
+                        expect(@paciente1.imc).to eq(15.43)
+                end
 	end
 end
