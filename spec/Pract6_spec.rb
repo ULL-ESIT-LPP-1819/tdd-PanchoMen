@@ -250,6 +250,10 @@ RSpec.describe Paciente do
 		it "Prueba para el RCC" do
                         expect(@paciente1.rcc).to eq(0.91)
                 end
+
+		it "Prueba to_s" do
+			expect(@paciente1.to_s).to eq("\tPepe\npeso: 50\ntalla: 1.8\nedad: 30\nsexo: hombre\nmedia circunferencia de cintura: 0.705\nmedia circunferencia de cadera: 0.775\n\tValoracion Nutricional:\tIMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
+		end
 	end
 end
 
