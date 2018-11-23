@@ -2,6 +2,8 @@ require './lib/Pract6/etiqueta.rb'
 require './lib/Pract6/lista.rb'
 require './lib/Pract6/individuo.rb'
 require './lib/Pract6/valoracionnutricional.rb'
+require './lib/Pract6/paciente.rb'
+
 
 RSpec.describe Etiqueta do
 
@@ -144,7 +146,7 @@ RSpec.describe Individuo do
                 @persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
         end
 
-        describe "# Pruebas de existencias de los atributos #" do
+        describe "# Pruebas para la clase Individuo #" do
 		it "Comprobar que existe un nombre" do
 			expect(@persona1.nombre).not_to be nil
 		end
@@ -206,4 +208,16 @@ RSpec.describe ValoracionNutricional do
 		end
 	end
 
+end
+
+RSpec.describe Paciente do
+	before :each do
+		@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+	end
+
+	describe "# Pruebas para la clase Paciente #" do
+		it "Prueba herencia" do
+			expect(@paciente1.is_a?Individuo).to eq(true)
+		end
+	end
 end
