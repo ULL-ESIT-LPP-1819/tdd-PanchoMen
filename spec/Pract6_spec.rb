@@ -252,7 +252,7 @@ RSpec.describe Paciente do
                 end
 
 		it "Prueba to_s" do
-			expect(@paciente1.to_s).to eq("\tPepe\npeso: 50\ntalla: 1.8\nedad: 30\nsexo: hombre\nmedia circunferencia de cintura: 0.705\nmedia circunferencia de cadera: 0.775\n\tValoracion Nutricional:\tIMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
+			expect(@paciente1.to_s).to eq("\tPepe\npeso: 50\ntalla: 1.8\nedad: 30\nsexo: hombre\nmedia circunferencia de cintura: 0.705\nmedia circunferencia de cadera: 0.775\n\tValoracion Nutricional:\nIMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
 		end
 	end
 end
@@ -260,10 +260,10 @@ end
 RSpec.describe Lista do
         before :each do
                 @lista = Lista.new()
-		@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Delgado
-		@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobre Peso
-		@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Aceptable
-		@paciente4 = Paciente.new("Jose", 95, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
+		@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Bajo peso
+		@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobrepeso
+		@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Adecuado
+		@paciente4 = Paciente.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
 		@paciente5 = Paciente.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 1 
 		@lista.insert(@paciente1)
 		@lista.insert(@paciente2)
@@ -273,8 +273,12 @@ RSpec.describe Lista do
 	end
 	
 	describe "Prueba de Lista de Pacientes" do
-		it "" do
-		expect(@lista).not_to be nil
+		it "Prueba de clasificación" do
+			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Obesidad grado 1")
+			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Obesidad grado 2")
+			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Adecuado")
+			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Sobrepeso")
+			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Bajo peso")
 		end
 	end
 end

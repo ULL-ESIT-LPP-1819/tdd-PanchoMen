@@ -3,6 +3,8 @@ require './lib/Pract6/valoracionnutricional.rb'
 
 
 class Paciente < Individuo
+	attr_reader :valoracion_nutricional
+
 	def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera)
 		super(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera)
 		@valoracion_nutricional = ValoracionNutricional.new(self)
@@ -19,5 +21,13 @@ class Paciente < Individuo
 
 	def rcc
 		@valoracion_nutricional.rcc
+	end
+
+	def to_s
+		string = super.to_s
+		string += "\n"
+		string += "\tValoracion Nutricional:\n"
+		string += @valoracion_nutricional.to_s
+		return string
 	end
 end
