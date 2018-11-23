@@ -220,8 +220,12 @@ RSpec.describe Paciente do
 			expect(@paciente1.is_a?Individuo).to eq(true)
 		end
 
-		it "Prueba de tipo de objeto" do
+		it "Prueba de la clase del objeto" do
                         expect(@paciente1.instance_of?Paciente).to eq(true)
+                end
+
+		it "Prueba de tipo de objeto" do
+                        expect(@paciente1.is_a?Paciente).to eq(true)
                 end
 
 		it "Comprobar que existe un nombre" do
