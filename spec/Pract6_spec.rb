@@ -252,3 +252,25 @@ RSpec.describe Paciente do
                 end
 	end
 end
+
+RSpec.describe Lista do
+        before :each do
+                @lista = Lista.new()
+		@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Delgado
+		@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobre Peso
+		@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Aceptable
+		@paciente4 = Paciente.new("Jose", 95, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
+		@paciente5 = Paciente.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 1 
+		@lista.insert(@paciente1)
+		@lista.insert(@paciente2)
+		@lista.insert(@paciente3)
+		@lista.insert(@paciente4)
+		@lista.insert(@paciente5)
+	end
+	
+	describe "Prueba de Lista de Pacientes" do
+		it "" do
+		expect(@lista).not_to be nil
+		end
+	end
+end
