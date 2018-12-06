@@ -224,6 +224,11 @@ RSpec.describe ValoracionNutricional do
 	before :each do
 		@persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
 		@valoracion1 = ValoracionNutricional.new(@persona1)
+		@persona2 = Individuo.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75])
+                @valoracion2 = ValoracionNutricional.new(@persona2)
+		@persona3 = Individuo.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75])
+                @valoracion3 = ValoracionNutricional.new(@persona3)
+		@valoracion4 = @valoracion3
 	end
 
 	describe "# Pruebas para la clase ValoraciónNutricional #" do
@@ -244,6 +249,41 @@ RSpec.describe ValoracionNutricional do
                         expect(@valoracion1.to_s).to eq("IMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
 		end
 	end
+
+	describe "Pruebas de Comparable" do
+                it "Operador <" do
+                        expect(@valoracion1 < @valoracion2).to eq(true)
+                        expect(@valoracion2 < @valoracion1).to eq(false)
+                end
+
+                it "Operador >" do
+                        expect(@valoracion2 > @valoracion1).to eq(true)
+                        expect(@valoracion1 > @valoracion2).to eq(false)
+                end
+
+                it "Operador ==" do
+                        expect(@valoracion4 == @valoracion3).to eq(true)
+                        expect(@valoracion1 > @valoracion2).to eq(false)
+                end
+
+                it "Operador <=" do
+                        expect(@valoracion1 <= @valoracion2).to eq(true)
+                        expect(@valoracion2 <= @valoracion1).to eq(false)
+                        expect(@valoracion4 <= @valoracion3).to eq(true)
+                end
+
+                it "Operador >=" do
+                        expect(@valoracion2 >= @valoracion1).to eq(true)
+                        expect(@valoracion1 >= @valoracion2).to eq(false)
+                        expect(@valoracion4 >= @valoracion3).to eq(true)
+                end
+
+                it "Operador between?" do
+                        expect(@valoracion2.between?(@valoracion1,@valoracion4)).to eq(true)
+                        expect(@valoracion1.between?(@valoracion2,@valoracion4)).to eq(false)
+                end
+        end
+
 
 end
 
