@@ -5,14 +5,18 @@ class Etiqueta
 
         def initialize(nombre, grasas, grasas_saturadas, hidratos_carbono, azucares, proteinas, sal)
                 @nombre = nombre
-		@valor_energetico = 0.0
                 @grasas = grasas
                 @grasas_saturadas = grasas_saturadas
                 @hidratos_carbono = hidratos_carbono
                 @azucares = azucares
                 @proteinas = proteinas
                 @sal = sal
+		@valor_energetico = get_valor_energetico_Kcal()
         end
+
+	def <=>(other)
+           @valor_energetico <=> other.valor_energetico
+         end
 
 	def to_s
 		"Nombre\tGrasas\tGrasas Saturadas\tHidratos de Carbono\tAzucares\tProteinas\tSales\n#{@nombre}\t#{@grasas}\t#{@grasas_saturadas}\t#{@hidratos_carbono}\t#{@azucares}\t#{@proteinas}\t#{@sal}"
