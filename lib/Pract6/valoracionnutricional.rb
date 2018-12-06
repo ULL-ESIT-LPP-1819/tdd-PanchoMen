@@ -1,6 +1,8 @@
 require './lib/Pract6/individuo.rb'
 
 class ValoracionNutricional
+	
+	include Comparable
 
 	attr_reader :paciente, :imc, :porcentaje_grasa, :rcc
 
@@ -9,8 +11,12 @@ class ValoracionNutricional
 		@imc = 0.0
 		@porcentaje_grasa = 0.0
 		@rcc = 0.0
+		calcular()
 	end	
-
+	
+	def <=>(other)
+           @imc <=> other.imc
+         end
 
 	def clas_imc()
 		if @imc < 18.5
