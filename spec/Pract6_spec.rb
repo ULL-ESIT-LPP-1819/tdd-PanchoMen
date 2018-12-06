@@ -132,15 +132,15 @@ RSpec.describe Etiqueta do
 end
 
 RSpec.describe Lista do
-	before :each do
-		@lista = Lista.new()
-					  #   Nombre,grasas,grasas_saturadas,hidratos_carbono,azucares,proteinas,sal
-		@etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
-		@etiqueta2 = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)
-
-	end
-	
 	describe "# Pruebas de la clase Lista #" do
+		 before :each do
+                	@lista = Lista.new()
+                                          #   Nombre,grasas,grasas_saturadas,hidratos_carbono,azucares,proteinas,sal
+                	@etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
+               		@etiqueta2 = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)
+        	        @etiqueta3 = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)
+	        end
+
 		it "Prueba para el nodo next" do
     			expect(@lista.inicio.next).to eq(nil)
 		end
@@ -175,7 +175,47 @@ RSpec.describe Lista do
                         expect(@lista.pop).to eq(@etiqueta1)
                         expect(@lista.empty?).to eq(false)
                 end
-  	end
+		
+	end
+
+	describe "Pruebas para enumerar listas de etiquetas de informacion nutricional" do
+		 before :all do
+                	@lista = Lista.new()
+                                          #   Nombre,grasas,grasas_saturadas,hidratos_carbono,azucares,proteinas,sal
+                	@etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
+                	@etiqueta2 = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)
+        	        @etiqueta3 = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)
+
+			@lista.insert(@etiqueta1)
+			@lista.insert(@etiqueta2)
+                        @lista.insert(@etiqueta2)
+                        @lista.insert(@etiqueta3)
+	        end
+
+		it "La lista se puede recorrer" do
+                        expect(@lista).to respond_to(:each)
+                end
+
+		it "comprobrando el metodo collect" do
+			expect(@lista.collect{|e| e.grasas >= 20.0}).to eq([true,false,false,true])
+  		end
+
+    		it "comprobando el metodo select" do
+			expect(@lista.select{|e| e.grasas <= 20.0}).to eq([@etiqueta2, @etiqueta2])
+    		end	
+
+    		it "comprobando el metodo max" do
+      			expect(@lista.max).to eq(@etiqueta3)
+    		end
+
+    		it "comprobando el metodo min" do
+      			expect(@lista.min).to eq(@etiqueta2)
+    		end
+
+    		it "comprobando el metodo sort" do
+      			expect(@lista.sort).to eq([@etiqueta2, @etiqueta2, @etiqueta1, @etiqueta3])
+   		end
+	end
 end
 
 RSpec.describe Individuo do

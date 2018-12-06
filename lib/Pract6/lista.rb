@@ -13,15 +13,24 @@ class Lista
         @size = 0
     end
 
+    #def each
+    #        node = @inicio
+    #        while node != @final
+    #            yield node.value
+    #            node = node.next
+    #        end 
+    #        yield node.value
+    #end
+
     def each
          node = @inicio
 
-         while !(node.nil?)
-             yield node.value
-           node = node.next
+         while (node != nil)
+             	yield node.value
+           	node = node.prev
          end
-      end
 
+      end
 
     def empty?()
         if(@size == 0)
