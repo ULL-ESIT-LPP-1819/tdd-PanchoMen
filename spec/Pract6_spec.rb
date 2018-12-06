@@ -177,45 +177,6 @@ RSpec.describe Lista do
                 end
 		
 	end
-
-	describe "Pruebas para enumerar listas de etiquetas de informacion nutricional" do
-		 before :all do
-                	@lista = Lista.new()
-                                          #   Nombre,grasas,grasas_saturadas,hidratos_carbono,azucares,proteinas,sal
-                	@etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
-                	@etiqueta2 = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)
-        	        @etiqueta3 = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)
-
-			@lista.insert(@etiqueta1)
-			@lista.insert(@etiqueta2)
-                        @lista.insert(@etiqueta2)
-                        @lista.insert(@etiqueta3)
-	        end
-
-		it "La lista se puede recorrer" do
-                        expect(@lista).to respond_to(:each)
-                end
-
-		it "comprobrando el metodo collect" do
-			expect(@lista.collect{|e| e.grasas >= 20.0}).to eq([true,false,false,true])
-  		end
-
-    		it "comprobando el metodo select" do
-			expect(@lista.select{|e| e.grasas <= 20.0}).to eq([@etiqueta2, @etiqueta2])
-    		end	
-
-    		it "comprobando el metodo max" do
-      			expect(@lista.max).to eq(@etiqueta3)
-    		end
-
-    		it "comprobando el metodo min" do
-      			expect(@lista.min).to eq(@etiqueta2)
-    		end
-
-    		it "comprobando el metodo sort" do
-      			expect(@lista.sort).to eq([@etiqueta2, @etiqueta2, @etiqueta1, @etiqueta3])
-   		end
-	end
 end
 
 RSpec.describe Individuo do
@@ -263,11 +224,11 @@ end
 RSpec.describe ValoracionNutricional do
 	before :each do
 		@persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
-		@valoracion1 = ValoracionNutricional.new(@persona1)
+		@valoracion1 = ValoracionNutricional.new(@persona1) #Bajo peso
 		@persona2 = Individuo.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75])
-                @valoracion2 = ValoracionNutricional.new(@persona2)
+                @valoracion2 = ValoracionNutricional.new(@persona2) #Adecuado
 		@persona3 = Individuo.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75])
-                @valoracion3 = ValoracionNutricional.new(@persona3)
+                @valoracion3 = ValoracionNutricional.new(@persona3) #Obesidad grado 2
 		@valoracion4 = @valoracion3
 	end
 
@@ -375,21 +336,23 @@ RSpec.describe Paciente do
 end
 
 RSpec.describe Lista do
-        before :each do
-                @lista = Lista.new()
-		@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Bajo peso
-		@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobrepeso
-		@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Adecuado
-		@paciente4 = Paciente.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
-		@paciente5 = Paciente.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 1 
-		@lista.insert(@paciente1)
-		@lista.insert(@paciente2)
-		@lista.insert(@paciente3)
-		@lista.insert(@paciente4)
-		@lista.insert(@paciente5)
-	end
-	
 	describe "Prueba de Lista de Pacientes" do
+	
+		before :all do
+                	@lista = Lista.new()
+                	@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Bajo peso
+                	@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobrepeso
+                	@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Adecuado
+                	@paciente4 = Paciente.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
+                	@paciente5 = Paciente.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 1 
+                	@lista.insert(@paciente1)
+                	@lista.insert(@paciente2)
+               	 	@lista.insert(@paciente3)
+                	@lista.insert(@paciente4)
+        	        @lista.insert(@paciente5)
+	        end
+	
+	
 		it "Prueba de clasificación" do
 			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Obesidad grado 1")
 			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Obesidad grado 2")
@@ -398,4 +361,87 @@ RSpec.describe Lista do
 			expect(@lista.shift.valoracion_nutricional.clas_imc).to eq("Bajo peso")
 		end
 	end
+
+	describe "Pruebas para enumerar listas de etiquetas de informacion nutricional" do
+                 before :all do
+                        @lista = Lista.new()
+                                          #   Nombre,grasas,grasas_saturadas,hidratos_carbono,azucares,proteinas,sal
+                        @etiqueta1 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
+                        @etiqueta2 = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)
+                        @etiqueta3 = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)
+
+                        @lista.insert(@etiqueta1)
+                        @lista.insert(@etiqueta2)
+                        @lista.insert(@etiqueta2)
+                        @lista.insert(@etiqueta3)
+                end
+
+                it "La lista se puede recorrer" do
+                        expect(@lista).to respond_to(:each)
+                end
+
+                it "comprobrando el metodo collect" do
+                        expect(@lista.collect{|e| e.grasas >= 20.0}).to eq([true,false,false,true])
+                end
+
+                it "comprobando el metodo select" do
+                        expect(@lista.select{|e| e.grasas <= 20.0}).to eq([@etiqueta2, @etiqueta2])
+                end
+
+                it "comprobando el metodo max" do
+                        expect(@lista.max).to eq(@etiqueta3)
+                end
+
+                it "comprobando el metodo min" do
+                        expect(@lista.min).to eq(@etiqueta2)
+                end
+
+                it "comprobando el metodo sort" do
+                        expect(@lista.sort).to eq([@etiqueta2, @etiqueta2, @etiqueta1, @etiqueta3])
+                end
+        end
+
+
+	describe "Pruebas para enumerar listas de valoraciones nutricionales de individuos" do
+                 before :all do
+                        @lista = Lista.new()
+
+                        @persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+                        @valoracion1 = ValoracionNutricional.new(@persona1) #Bajo peso
+                        @persona2 = Individuo.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75])
+                        @valoracion2 = ValoracionNutricional.new(@persona2) #Adecuado
+                        @persona3 = Individuo.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75])
+                        @valoracion3 = ValoracionNutricional.new(@persona3) #Obesidad grado 2
+                        @valoracion4 = @valoracion3
+
+                        @lista.insert(@valoracion1)
+                        @lista.insert(@valoracion2)
+                        @lista.insert(@valoracion3)
+                        @lista.insert(@valoracion4)
+                end
+
+                it "La lista se puede recorrer" do
+                        expect(@lista).to respond_to(:each)
+                end
+
+                it "comprobrando el metodo collect" do
+                        expect(@lista.collect{|v| v.imc >= 24.9}).to eq([true,true,false,false])
+                end
+
+                it "comprobando el metodo select" do
+                        expect(@lista.select{|v| v.imc <= 24.9}).to eq([@valoracion2, @valoracion1])
+                end
+
+                it "comprobando el metodo max" do
+                        expect(@lista.max).to eq(@valoracion3)
+                end
+
+                it "comprobando el metodo min" do
+                        expect(@lista.min).to eq(@valoracion1)
+                end
+
+                it "comprobando el metodo sort" do
+                        expect(@lista.sort).to eq([@valoracion1, @valoracion2, @valoracion3, @valoracion4])
+                end
+        end
 end
