@@ -13,8 +13,6 @@ class ValoracionNutricional
 
 
 	def clas_imc()
-
-		#"IMC: 15.43 (Bajo Peso)"
 		if @imc < 18.5
 			return "Bajo peso"
 		elsif @imc >= 18.5 && @imc <= 24.9

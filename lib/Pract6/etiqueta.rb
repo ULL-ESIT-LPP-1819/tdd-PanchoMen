@@ -1,4 +1,6 @@
 class Etiqueta
+	include Comparable
+
 	attr_reader :nombre, :valor_energetico, :grasas, :grasas_saturadas, :hidratos_carbono, :azucares, :proteinas, :sal
 
         def initialize(nombre, grasas, grasas_saturadas, hidratos_carbono, azucares, proteinas, sal)

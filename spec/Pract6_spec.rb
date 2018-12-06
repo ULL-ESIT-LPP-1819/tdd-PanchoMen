@@ -11,7 +11,9 @@ RSpec.describe Etiqueta do
 					 #   Nombre,grasas,grasas_saturadas,hidratos_carbono,azucares,proteinas,sal
 		@etiqueta1 = Etiqueta.new("Galletas", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 		@etiqueta2 = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)
-  	end
+		@etiqueta3 = @etiqueta2
+  		@etiqueta4 = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)
+	end
 
 	describe "# Pruebas de existencias de los atributos #" do
 		it "Comprobar que existe un nombre de etiqueta" do
@@ -92,6 +94,41 @@ RSpec.describe Etiqueta do
 			expect(@etiqueta2.get_IR).to eq(0.27)
 		end
 	end
+
+	describe "Pruebas de Comparable" do
+		it "Operador <" do
+			expect(@etiqueta1 < @etiqueta2).to eq(true)
+			expect(@etiqueta2 < @etiqueta1).to eq(false)
+		end
+
+		it "Operador >" do
+			expect(@etiqueta2 > @etiqueta1).to eq(true)
+                        expect(@etiqueta1 > @etiqueta2).to eq(false)
+                end
+
+		it "Operador ==" do
+			expect(@etiqueta2 == @etiqueta3).to eq(true)
+			expect(@etiqueta1 > @etiqueta2).to eq(false)
+                end
+
+		it "Operador <=" do
+			expect(@etiqueta1 <= @etiqueta2).to eq(true)
+                        expect(@etiqueta2 <= @etiqueta1).to eq(false)
+			expect(@etiqueta2 <= @etiqueta3).to eq(true)
+                end
+
+		it "Operador >=" do
+			expect(@etiqueta2 >= @etiqueta1).to eq(true)
+                        expect(@etiqueta1 >= @etiqueta2).to eq(false)
+			expect(@etiqueta2 >= @etiqueta3).to eq(true)
+                end
+
+		it "Operador between?" do
+			expect(@etiqueta2.between?(@etiqueta1,@etiqueta4)).to eq(true)
+			expect(@etiqueta1.between?(@etiqueta2,@etiqueta4)).to eq(false)
+                end  
+	end
+
 end
 
 RSpec.describe Lista do
