@@ -2,13 +2,26 @@
 Node = Struct.new(:value, :next, :prev)
 
 class Lista
-    attr_accessor :inicio, :final, :size
+    
+	include Enumerable
+
+	attr_accessor :inicio, :final, :size
 	
     def initialize()
         @inicio= Node.new(nil,nil,nil)
         @final= Node.new(nil,nil,nil)
         @size = 0
     end
+
+    def each
+         node = @inicio
+
+         while !(node.nil?)
+             yield node.value
+           node = node.next
+         end
+      end
+
 
     def empty?()
         if(@size == 0)
