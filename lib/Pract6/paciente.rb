@@ -31,7 +31,21 @@ class Paciente < Individuo
 		return string
 	end
 
+	def talla_cm
+		(@talla * 100).to_i
+	end
+
 	def peso_teorico_ideal
-		(((talla*100).to_i - 150) * 0.75 + 50).round(1)
+		((talla_cm - 150) * 0.75 + 50).round(1)
+	end
+
+	def gasto_energetico_basal
+		if @sexo == 1 #Hombres
+			(10 * @peso + 6.25 * talla_cm - 5 * @edad + 5)
+			#.round(1)
+		else  #Mujeres	
+			(10 * @peso + 6.25 * talla_cm - 5 * @edad - 161)
+			#.round(1)
+		end
 	end
 end
