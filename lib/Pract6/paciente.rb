@@ -48,4 +48,8 @@ class Paciente < Individuo
 			#.round(1)
 		end
 	end
+
+	def efecto_termogeno
+		gasto_energetico_basal * 0.1
+	end
 end
