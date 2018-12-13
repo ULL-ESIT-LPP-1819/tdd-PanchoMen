@@ -52,4 +52,8 @@ class Paciente < Individuo
 	def efecto_termogeno
 		gasto_energetico_basal * 0.1
 	end
+
+	def gasto_actividad_fisica(factor)
+                gasto_energetico_basal * factor
+        end
 end
