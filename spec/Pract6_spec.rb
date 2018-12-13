@@ -289,11 +289,11 @@ RSpec.describe ValoracionNutricional do
 end
 
 RSpec.describe Paciente do
-	before :each do
-		@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
-	end
-
 	describe "# Pruebas para la clase Paciente #" do
+		before :all do
+                	@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+        	end
+
 		it "Prueba herencia" do
 			expect(@paciente1.is_a?Individuo).to eq(true)
 		end
@@ -331,6 +331,17 @@ RSpec.describe Paciente do
 
 		it "Prueba to_s" do
 			expect(@paciente1.to_s).to eq("\tPepe\npeso: 50\ntalla: 1.8\nedad: 30\nsexo: hombre\nmedia circunferencia de cintura: 0.705\nmedia circunferencia de cadera: 0.775\n\tValoracion Nutricional:\nIMC: 15.43\nPorcentaje de grasa: 9.22\nRCC: 0.91")
+		end
+	end
+
+	describe "# Pruebas de la Practica 10 #" do
+		before :all do
+                        @paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+                end
+
+		it "Prueba para el calculo del peso teorico ideal" do
+			expect(@paciente1.respond_to?('peso_teorico_ideal')).to eq(true)
+			expect(@paciente1.peso_teorico_ideal).to eq(72.5)
 		end
 	end
 end
