@@ -355,6 +355,14 @@ RSpec.describe Paciente do
 			expect(@paciente1.respond_to?('efecto_termogeno')).to eq(true)
 			expect(@paciente1.efecto_termogeno).to eq(148)
 		end
+
+		it "Prueba para el calculo del gasto de actividad fisica" do
+			expect(@paciente1.respond_to?('gasto_actividad_fisica')).to eq(true)
+			expect(@paciente1.gasto_actividad_fisica(0.0)).to eq(0)
+			expect(@paciente1.gasto_actividad_fisica(0.12)).to eq(177.6)
+			expect(@paciente1.gasto_actividad_fisica(0.27)).to eq(399.6)
+			expect(@paciente1.gasto_actividad_fisica(0.54)).to eq(799.2)
+		end
 	end
 end
 
