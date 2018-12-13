@@ -350,6 +350,11 @@ RSpec.describe Paciente do
 			expect(@paciente1.gasto_energetico_basal).to eq(1480)
 			expect(@paciente2.gasto_energetico_basal).to eq(1606.5)
 		end
+
+		it "Prueba para el calculo del efecto termogeno de los alimentos" do
+			expect(@paciente1.respond_to?('efecto_termogeno')).to eq(true)
+			expect(@paciente1.efecto_termogeno).to eq(148)
+		end
 	end
 end
 
