@@ -30,4 +30,8 @@ class Paciente < Individuo
 		string += @valoracion_nutricional.to_s
 		return string
 	end
+
+	def peso_teorico_ideal
+		(((talla*100).to_i - 150) * 0.75 + 50).round(1)
+	end
 end
