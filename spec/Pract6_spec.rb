@@ -291,7 +291,7 @@ end
 RSpec.describe Paciente do
 	describe "# Pruebas para la clase Paciente #" do
 		before :all do
-                	@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
+                	@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75], 0.27)
         	end
 
 		it "Prueba herencia" do
@@ -336,8 +336,8 @@ RSpec.describe Paciente do
 
 	describe "# Pruebas de la Practica 10 #" do
 		before :all do
-                        @paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
-                	@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75])
+			@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75], 0.27)
+			@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75], 0.12)
 		end
 
 		it "Prueba para el calculo del peso teorico ideal" do
@@ -363,6 +363,12 @@ RSpec.describe Paciente do
 			expect(@paciente1.gasto_actividad_fisica(0.27)).to eq(399.6)
 			expect(@paciente1.gasto_actividad_fisica(0.54)).to eq(799.2)
 		end
+
+		it "Prueba para el calculo del gasto energetico total" do
+			expect(@paciente1.respond_to?('gasto_energetico_total')).to eq(true)
+			expect(@paciente1.gasto_energetico_total).to eq(2027.6)
+			expect(@paciente2.gasto_energetico_total).to eq(1959.93)
+		end
 	end
 end
 
@@ -371,11 +377,11 @@ RSpec.describe Lista do
 	
 		before :all do
                 	@lista = Lista.new()
-                	@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Bajo peso
-                	@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobrepeso
-                	@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Adecuado
-                	@paciente4 = Paciente.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
-                	@paciente5 = Paciente.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 1 
+                	@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75], 0.27) #Bajo peso
+                	@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75], 0.12) #Sobrepeso
+                	@paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75], 0.54) #Adecuado
+                	@paciente4 = Paciente.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75], 0.0) #Obesidad grado 2
+                	@paciente5 = Paciente.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75], 0.0) #Obesidad grado 1 
                 	@lista.insert(@paciente1)
                 	@lista.insert(@paciente2)
                	 	@lista.insert(@paciente3)
