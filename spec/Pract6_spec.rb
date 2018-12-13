@@ -337,11 +337,18 @@ RSpec.describe Paciente do
 	describe "# Pruebas de la Practica 10 #" do
 		before :all do
                         @paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75])
-                end
+                	@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75])
+		end
 
 		it "Prueba para el calculo del peso teorico ideal" do
 			expect(@paciente1.respond_to?('peso_teorico_ideal')).to eq(true)
 			expect(@paciente1.peso_teorico_ideal).to eq(72.5)
+		end
+
+		it "Prueba para el calculo del gasto energetico basal" do
+			expect(@paciente1.respond_to?('gasto_energetico_basal')).to eq(true)
+			expect(@paciente1.gasto_energetico_basal).to eq(1480)
+			expect(@paciente2.gasto_energetico_basal).to eq(1606.5)
 		end
 	end
 end
