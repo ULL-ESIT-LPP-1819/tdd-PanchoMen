@@ -5,10 +5,11 @@ require './lib/Pract6/valoracionnutricional.rb'
 class Paciente < Individuo
 	attr_reader :valoracion_nutricional
 
-	def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera)
+	def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera, factor_act_fis)
 		super(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera)
 		@valoracion_nutricional = ValoracionNutricional.new(self)
 		@valoracion_nutricional.calcular()
+		@factor_act_fis = factor_act_fis
 	end
 
 	def imc
@@ -56,4 +57,8 @@ class Paciente < Individuo
 	def gasto_actividad_fisica(factor)
                 gasto_energetico_basal * factor
         end
+
+	def gasto_energetico_total
+		gasto_energetico_basal + efecto_termogeno + gasto_actividad_fisica(@factor_act_fis)
+	end
 end
