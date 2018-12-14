@@ -60,5 +60,5 @@ class Etiqueta
 
 	def get_IR
     	    (get_valor_energetico_KJ / 8400).round(2)
-    	end
+    	end	
 end

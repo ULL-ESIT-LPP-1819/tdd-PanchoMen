@@ -61,4 +61,10 @@ class Paciente < Individuo
 	def gasto_energetico_total
 		gasto_energetico_basal + efecto_termogeno + gasto_actividad_fisica(@factor_act_fis)
 	end
+
+	def menu_dietectico?(menu)
+		valor_energetico = menu.map{|i| i.get_valor_energetico_Kcal}.reduce(:+).round(1)
+		#puts "Gasto energetico entre: #{gasto_energetico_total * 0.9} - #{gasto_energetico_total * 1.1}, valor obtenido: #{valor_energetico}"
+		((gasto_energetico_total * 0.9)...(gasto_energetico_total * 1.1)).include? valor_energetico
+	end
 end

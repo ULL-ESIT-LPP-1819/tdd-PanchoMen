@@ -13,15 +13,6 @@ class Lista
         @size = 0
     end
 
-    #def each
-    #        node = @inicio
-    #        while node != @final
-    #            yield node.value
-    #            node = node.next
-    #        end 
-    #        yield node.value
-    #end
-
     def each
          node = @inicio
 
