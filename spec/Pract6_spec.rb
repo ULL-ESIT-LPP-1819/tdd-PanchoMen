@@ -334,7 +334,7 @@ RSpec.describe Paciente do
 		end
 	end
 
-	describe "# Pruebas de la Practica 10 #" do
+	describe "# Pruebas de la Practica 10: Paciente #" do
 		before :all do
 			@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75], 0.27)
 			@paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75], 0.12)
@@ -368,6 +368,39 @@ RSpec.describe Paciente do
 			expect(@paciente1.respond_to?('gasto_energetico_total')).to eq(true)
 			expect(@paciente1.gasto_energetico_total).to eq(2027.6)
 			expect(@paciente2.gasto_energetico_total).to eq(1959.93)
+		end
+
+	end
+        describe "# Pruebas de la Practica 10: Menu Dietetico #" do
+		 before :all do
+                        @paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75], 0.27)
+                        @paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75], 0.12)
+
+			@chocolate = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)	#533.9 Kcal
+			@galletas = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)	#350.5 Kcal
+			@leche = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)			#769.8 kcal
+                        @arroz = Etiqueta.new("Arroz", 60,15,50,56.3,7,0.3)			#769.8 kcal
+                        @tomate = Etiqueta.new("Tomate", 60,15,50,56.3,7,0.3)			#769.8 kcal
+			@pan = Etiqueta.new("Pan", 30.9,10.6,57.5,56.3,6.3,0.107)	    	#533.9 Kcal
+
+			@menu1 = Lista.new()	#3193.8 kcal
+			@menu2 = Lista.new()	#2188.1 kcal
+
+                        @menu1.insert(@chocolate)
+                        @menu1.insert(@galletas)
+                        @menu1.insert(@leche)
+                        @menu1.insert(@arroz)
+                        @menu1.insert(@tomate)
+
+			@menu2.insert(@chocolate)
+                        @menu2.insert(@galletas)
+                        @menu2.insert(@leche)
+			@menu2.insert(@pan)
+                end
+
+		 it "Prueba para determinar si la alimentacion es suficiente" do #1824.84 - 2230.36
+			expect(@paciente1.menu_dietectico?(@menu1)).to eq(false)
+			expect(@paciente1.menu_dietectico?(@menu2)).to eq(true)
 		end
 	end
 end
