@@ -631,34 +631,34 @@ RSpec.describe Menu do
                         @tomate = Etiqueta.new("Tomate", 60,15,50,56.3,7,0.3)                   #769.8 kcal
                         @pan = Etiqueta.new("Pan", 30.9,10.6,57.5,56.3,6.3,0.107)               #533.9 Kcal
 
-                        @menu1 = Menu.new()
+			@menu1 = Menu.new()	#1303.7 kcal
                         @menu1.add(@chocolate)
-                        @menu1.add(@galletas)
-                        @menu2 = Menu.new()
+                        @menu1.add(@tomate)
+			@menu2 = Menu.new()	#884.4 kcal
                         @menu2.add(@galletas)
                         @menu2.add(@mermelada)
-                        @menu3 = Menu.new()
+			@menu3 = Menu.new()	#1067.8 kcal
                         @menu3.add(@mermelada)
                         @menu3.add(@chocolate)
-                        @menu4 = Menu.new()
+			@menu4 = Menu.new()	#884.4 kcal
                         @menu4.add(@donut)
                         @menu4.add(@queso)
-                        @menu5 = Menu.new()
+			@menu5 = Menu.new()	#1120.3 kcal
                         @menu5.add(@chorizo)
                         @menu5.add(@leche)
-                        @menu6 = Menu.new()
+                        @menu6 = Menu.new()	#656 kcal
                         @menu6.add(@chorizo)
                         @menu6.add(@donut)
-                        @menu7 = Menu.new()
+			@menu7 = Menu.new()	#1539.6 kcal
                         @menu7.add(@tomate)
                         @menu7.add(@arroz)
-                        @menu8 = Menu.new()
+			@menu8 = Menu.new()	#1067.8 kcal
                         @menu8.add(@queso)
                         @menu8.add(@pan)
-                        @menu9 = Menu.new()
+                        @menu9 = Menu.new()	#1539 kcal
                         @menu9.add(@tomate)
                         @menu9.add(@leche)
-                        @menu10 = Menu.new()
+                        @menu10 = Menu.new()	#1303 kcal
                         @menu10.add(@pan)
                         @menu10.add(@arroz)
 
@@ -673,7 +673,8 @@ RSpec.describe Menu do
                         @menus << @menu8
                         @menus << @menu9
                         @menus << @menu10
-                
+  
+
 			@paciente1 = Paciente.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75], 0.27) #Bajo peso
                         @paciente2 = Paciente.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75], 0.12) #Sobrepeso
                         @paciente3 = Paciente.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75], 0.54) #Adecuado
@@ -698,11 +699,19 @@ RSpec.describe Menu do
                         @lista.insert(@paciente8)
                         @lista.insert(@paciente9)
                         @lista.insert(@paciente10)
+
 		end
 
-		it "Ordenar la lista de valoraciones y el array de menus" do
-			expect(Utils.sort(@menus)).to eq([@menu, @menu, @menu, @menu, @menu, @menu, @menu, @menu, @menu, @menu])
-			expect(Utils.sort(@lista)).to eq([@paciente, @paciente, @paciente, @paciente, @paciente, @paciente, @paciente, @paciente, @paciente, @paciente])
+		it "Ordenar el array de menus" do
+			utils = Utils.new
+			#6, 2, 4, 3, 8, 5, 1, 10, 9, 7
+			expect(utils.sort(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+		end
+
+		it "Ordenar la lista de valoraciones" do
+			utils = Utils.new
+			#5, 10, 2, 7, 1, 6, 4, 9, 3, 8
+			expect(utils.sort(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
 		end
 	 end
 end

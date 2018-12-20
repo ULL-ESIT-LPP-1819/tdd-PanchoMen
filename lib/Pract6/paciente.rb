@@ -3,6 +3,9 @@ require './lib/Pract6/valoracionnutricional.rb'
 
 
 class Paciente < Individuo
+	
+	include Comparable
+
 	attr_reader :valoracion_nutricional
 
 	def initialize(nombre, peso, talla, edad, sexo, cir_cintura, cir_cadera, factor_act_fis)
@@ -10,6 +13,10 @@ class Paciente < Individuo
 		@valoracion_nutricional = ValoracionNutricional.new(self)
 		@valoracion_nutricional.calcular()
 		@factor_act_fis = factor_act_fis
+	end
+
+	def <=>(other)
+		gasto_energetico_total  <=> other.gasto_energetico_total
 	end
 
 	def imc
@@ -26,9 +33,8 @@ class Paciente < Individuo
 
 	def to_s
 		string = super.to_s
-		string += "\n"
-		string += "\tValoracion Nutricional:\n"
-		string += @valoracion_nutricional.to_s
+		string += "\n\tValoracion Nutricional:\n"
+		string +=  @valoracion_nutricional.to_s
 		return string
 	end
 
