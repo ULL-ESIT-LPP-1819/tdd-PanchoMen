@@ -518,7 +518,7 @@ RSpec.describe Lista do
 end
 
 RSpec.describe Menu do
-	describe "Pruebas para el ejercicio numero uno" do
+	describe "Pruebas para el ejercicio numero 1" do
 		before :all do
 			@chocolate = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)   #533.9 Kcal
                         @galletas = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)  #350.5 Kcal
@@ -579,5 +579,44 @@ RSpec.describe Menu do
 			expect(@menus.length).to eq(10);
 		end
 	end
+
+	describe "Pruebas para el ejercicio numero 2" do
+		before :all do
+			@persona1 = Individuo.new("Pepe", 50, 1.80, 30, 1, [0.70, 0.71], [0.80, 0.75]) #Bajo peso
+                        @persona2 = Individuo.new("Patricia", 80, 1.70, 19, 0, [0.70, 0.71], [0.80, 0.75]) #Sobrepeso
+                        @persona3 = Individuo.new("Manuel", 63, 1.80, 60, 1, [0.70, 0.71], [0.80, 0.75]) #Adecuado
+                        @persona4 = Individuo.new("Jose", 100, 1.63, 16, 1, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 2
+                        @persona5 = Individuo.new("Teresa", 60, 1.40, 44, 0, [0.70, 0.71], [0.80, 0.75]) #Obesidad grado 1
+			
+			@valoracion1 = ValoracionNutricional.new(@persona1)
+			@valoracion2 = ValoracionNutricional.new(@persona2)
+			@valoracion3 = ValoracionNutricional.new(@persona3)
+			@valoracion4 = ValoracionNutricional.new(@persona4)
+			@valoracion5 = ValoracionNutricional.new(@persona5)
+			@valoracion6 = @valoracion1
+			@valoracion7 = @valoracion2
+			@valoracion8 = @valoracion3
+			@valoracion9 = @valoracion4
+			@valoracion10 = @valoracion5
+                end
+
+		it "Crear lista con 10 valoraciones" do
+			@lista = Lista.new()
+
+			@lista.insert(@valoracion1)
+                        @lista.insert(@valoracion2)
+                        @lista.insert(@valoracion3)
+                        @lista.insert(@valoracion4)
+			@lista.insert(@valoracion5)
+                        @lista.insert(@valoracion6)
+                        @lista.insert(@valoracion7)
+                        @lista.insert(@valoracion8)
+			@lista.insert(@valoracion9)
+                        @lista.insert(@valoracion10)
+
+			expect(@lista.size).to eq(10)
+		end
+	end
+
 
 end
