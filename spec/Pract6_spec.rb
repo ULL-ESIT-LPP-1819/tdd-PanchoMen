@@ -618,7 +618,7 @@ RSpec.describe Menu do
 		end
 	end
 
-	 describe "Pruebas para el ejercicio numero 2" do
+	 describe "Pruebas para el ejercicio numero 3 y 4" do
 		before :all do
                         @chocolate = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)   #533.9 Kcal
                         @galletas = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)  #350.5 Kcal
@@ -702,16 +702,29 @@ RSpec.describe Menu do
 
 		end
 
-		it "Ordenar el array de menus" do
+		it "Ordenar el array de menus (for)" do
 			utils = Utils.new
 			#6, 2, 4, 3, 8, 5, 1, 10, 9, 7
-			expect(utils.sort(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+			expect(utils.sort_for(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
 		end
 
-		it "Ordenar la lista de valoraciones" do
+		it "Ordenar la lista de valoraciones (for)" do
 			utils = Utils.new
 			#5, 10, 2, 7, 1, 6, 4, 9, 3, 8
-			expect(utils.sort(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
+			expect(utils.sort_for(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
 		end
+		
+		it "Ordenar el array de menus (each)" do
+                        utils = Utils.new
+                        #6, 2, 4, 3, 8, 5, 1, 10, 9, 7
+                        expect(utils.sort_each(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+                end
+
+                it "Ordenar la lista de valoraciones (each)" do
+                        utils = Utils.new
+                        #5, 10, 2, 7, 1, 6, 4, 9, 3, 8
+                        expect(utils.sort_each(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
+                end
+
 	 end
 end
