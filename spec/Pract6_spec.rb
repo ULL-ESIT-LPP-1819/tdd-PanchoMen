@@ -3,6 +3,7 @@ require './lib/Pract6/lista.rb'
 require './lib/Pract6/individuo.rb'
 require './lib/Pract6/valoracionnutricional.rb'
 require './lib/Pract6/paciente.rb'
+require './lib/Pract6/menu.rb' 
 
 
 RSpec.describe Etiqueta do
@@ -514,4 +515,69 @@ RSpec.describe Lista do
                         expect(@lista.sort).to eq([@valoracion1, @valoracion2, @valoracion3, @valoracion4])
                 end
         end
+end
+
+RSpec.describe Menu do
+	describe "Pruebas para el ejercicio numero uno" do
+		before :all do
+			@chocolate = Etiqueta.new("Chocolate", 30.9,10.6,57.5,56.3,6.3,0.107)   #533.9 Kcal
+                        @galletas = Etiqueta.new("Galletas", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)  #350.5 Kcal
+                        @mermelada = Etiqueta.new("Mermelada", 30.9,10.6,57.5,56.3,6.3,0.107)   #533.9 Kcal
+                        @donut = Etiqueta.new("Donut", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)        #350.5 Kcal
+			@queso = Etiqueta.new("Queso", 30.9,10.6,57.5,56.3,6.3,0.107)	        #533.9 Kcal
+                        @chorizo = Etiqueta.new("Chorizo", 10.0, 4.2, 60.0, 40.6, 5.0, 0.09)  	#350.5 Kcal
+			@leche = Etiqueta.new("Leche", 60,15,50,56.3,7,0.3)                     #769.8 kcal
+                        @arroz = Etiqueta.new("Arroz", 60,15,50,56.3,7,0.3)                     #769.8 kcal
+                        @tomate = Etiqueta.new("Tomate", 60,15,50,56.3,7,0.3)                   #769.8 kcal
+                        @pan = Etiqueta.new("Pan", 30.9,10.6,57.5,56.3,6.3,0.107)               #533.9 Kcal
+
+			@menu1 = Menu.new()
+			@menu1.add(@chocolate)
+			@menu1.add(@galletas)
+			@menu2 = Menu.new()
+			@menu2.add(@galletas)
+			@menu2.add(@mermelada)
+			@menu3 = Menu.new()
+			@menu3.add(@mermelada)
+			@menu3.add(@chocolate)
+			@menu4 = Menu.new()
+			@menu4.add(@donut)
+			@menu4.add(@queso)
+			@menu5 = Menu.new()
+			@menu5.add(@chorizo)
+			@menu5.add(@leche)
+			@menu6 = Menu.new()
+			@menu6.add(@chorizo)
+			@menu6.add(@donut)
+			@menu7 = Menu.new()
+			@menu7.add(@tomate)
+			@menu7.add(@arroz)
+			@menu8 = Menu.new()
+			@menu8.add(@queso)
+			@menu8.add(@pan)
+			@menu9 = Menu.new()
+			@menu9.add(@tomate)
+			@menu9.add(@leche)
+			@menu10 = Menu.new()
+			@menu10.add(@pan)
+			@menu10.add(@arroz)
+		end
+
+		it "Crear array de 10 menus" do
+			@menus = []
+			@menus << @menu1
+			@menus << @menu2
+			@menus << @menu3
+			@menus << @menu4
+			@menus << @menu5
+			@menus << @menu6
+			@menus << @menu7
+			@menus << @menu8
+			@menus << @menu9
+			@menus << @menu10
+
+			expect(@menus.length).to eq(10);
+		end
+	end
+
 end
