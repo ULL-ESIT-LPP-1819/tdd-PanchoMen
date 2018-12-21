@@ -5,6 +5,8 @@ require './lib/Pract6/valoracionnutricional.rb'
 require './lib/Pract6/paciente.rb'
 require './lib/Pract6/menu.rb' 
 require './lib/Pract6/utils.rb'
+require 'benchmark'
+include Benchmark
 
 RSpec.describe Etiqueta do
 
@@ -705,35 +707,47 @@ RSpec.describe Menu do
 		it "Ordenar el array de menus (for)" do
 			utils = Utils.new
 			#6, 2, 4, 3, 8, 5, 1, 10, 9, 7
-			expect(utils.sort_for(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+			puts Benchmark.measure {
+				expect(utils.sort_for(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+			}	
 		end
 
 		it "Ordenar la lista de valoraciones (for)" do
 			utils = Utils.new
 			#5, 10, 2, 7, 1, 6, 4, 9, 3, 8
-			expect(utils.sort_for(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
+			puts Benchmark.measure {
+				expect(utils.sort_for(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
+			}
 		end
 		
 		it "Ordenar el array de menus (each)" do
                         utils = Utils.new
                         #6, 2, 4, 3, 8, 5, 1, 10, 9, 7
-                        expect(utils.sort_each(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
-                end
+                        puts Benchmark.measure {
+				expect(utils.sort_each(@menus)).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+                	}
+		end
 
                 it "Ordenar la lista de valoraciones (each)" do
                         utils = Utils.new
                         #5, 10, 2, 7, 1, 6, 4, 9, 3, 8
-                        expect(utils.sort_each(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
-                end
+                        puts Benchmark.measure {
+				expect(utils.sort_each(@lista)).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
+			}
+		end
 		
 		it "Ordenar el array de menus (sort)" do
                         #6, 2, 4, 3, 8, 5, 1, 10, 9, 7
-			expect(@menus.sort).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
-                end
+			puts Benchmark.measure {
+				expect(@menus.sort).to eq([@menu6, @menu2, @menu4, @menu3, @menu8, @menu5, @menu1, @menu10, @menu9, @menu7])
+			}
+		end
 
                 it "Ordenar la lista de valoraciones (sort)" do
                         #5, 10, 2, 7, 1, 6, 4, 9, 3, 8
-			expect(@lista.sort).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
-                end
+			puts Benchmark.measure {
+				expect(@lista.sort).to eq([@paciente5, @paciente10, @paciente2, @paciente7, @paciente1, @paciente6, @paciente4, @paciente9, @paciente3, @paciente8])
+                	}
+		end
 	 end
 end
